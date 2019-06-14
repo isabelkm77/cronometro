@@ -1,0 +1,35 @@
+body{
+    background-color: #333333;
+}
+
+
+#wrapper{
+    width:            800px;
+    margin:           0 auto;
+    text-align:       center;
+    padding:          2em;
+}
+
+#reloj{
+    font-size:   10em;
+    font-weight: bold;
+}
+
+.aviso_amarillo{
+    color: yellow;
+}
+
+.aviso_rojo{
+    color: red;
+}
+
+.numero{
+}
+
+#control{
+    margin: 1em;
+}
+
+#control input{
+    /*border:    2px solid black;*/
+}
