@@ -5,14 +5,14 @@ body{
 
 #wrapper{
     width:            800px;
-    margin:           0 auto;
+    margin:          0 auto;
     text-align:       center;
     padding:          2em;
 }
 
-#reloj{
-    font-size:   10em;
-    font-weight: bold;
+.watch{
+    font-size:   10rem;
+    font-weight: bold ;
 }
 
 .aviso_amarillo{

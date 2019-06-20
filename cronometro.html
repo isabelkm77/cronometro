@@ -6,33 +6,32 @@
         <link rel="stylesheet" type="text/css" href="lib/jquery-ui.css">
         <link rel="stylesheet" type="text/css" href="styles/styles.css">
     </head>
-
     <body>
         <div id="wrapper">
             <div class="ui-widget-shadow ui-corner-all">
                 <div class="ui-widget ui-widget-content ui-corner-all">
-                    <div id="reloj">
-                        <span id="horas">00</span>:<span id="minutos">00</span>:<span id="segundos">00</span>
+                    <div  class="watch">
+                        <span class="hour">00</span>:<span class="minute">00</span>:<span class="second">00</span>
                     </div>
 
-                    <div id="teclado">
-                        <input type="button" id="num0" class="numero ui-button ui-widget ui-state-default ui-button-text-only ui-corner-all" onclick="javascript:pulsar(0);" value="0" />
-                        <input type="button" id="num1" class="numero ui-button ui-widget ui-state-default ui-button-text-only ui-corner-all" onclick="javascript:pulsar(1);" value="1" />
-                        <input type="button" id="num2" class="numero ui-button ui-widget numero ui-state-default ui-button-text-only ui-corner-all" onclick="javascript:pulsar(2);" value="2" />
-                        <input type="button" id="num3" class="numero ui-button ui-widget numero ui-state-default ui-button-text-only ui-corner-all" onclick="javascript:pulsar(3);" value="3" />
-                        <input type="button" id="num4" class="numero ui-button ui-widget numero ui-state-default ui-button-text-only ui-corner-all" onclick="javascript:pulsar(4);" value="4" />
-                        <input type="button" id="num5" class="numero ui-button ui-widget numero ui-state-default ui-button-text-only ui-corner-all" onclick="javascript:pulsar(5);" value="5" />
-                        <input type="button" id="num6" class="numero ui-button ui-widget numero ui-state-default ui-button-text-only ui-corner-all" onclick="javascript:pulsar(6);" value="6" />
-                        <input type="button" id="num7" class="numero ui-button ui-widget numero ui-state-default ui-button-text-only ui-corner-all" onclick="javascript:pulsar(7);" value="7" />
-                        <input type="button" id="num8" class="numero ui-button ui-widget numero ui-state-default ui-button-text-only ui-corner-all" onclick="javascript:pulsar(8);" value="8" />
-                        <input type="button" id="num9" class="numero ui-button ui-widget numero ui-state-default ui-button-text-only ui-corner-all" onclick="javascript:pulsar(9);" value="9" />
+                    <div class="keynumber">
+                        <input type="button"  class="numero ui-button ui-widget ui-state-default ui-button-text-only ui-corner-all" onclick="javascript:pulsar(0);" value="0" />
+                        <input type="button"  class="numero ui-button ui-widget ui-state-default ui-button-text-only ui-corner-all" onclick="javascript:pulsar(1);" value="1" />
+                        <input type="button"  class="numero ui-button ui-widget numero ui-state-default ui-button-text-only ui-corner-all" onclick="javascript:pulsar(2);" value="2" />
+                        <input type="button"  class="numero ui-button ui-widget numero ui-state-default ui-button-text-only ui-corner-all" onclick="javascript:pulsar(3);" value="3" />
+                        <input type="button"  class="numero ui-button ui-widget numero ui-state-default ui-button-text-only ui-corner-all" onclick="javascript:pulsar(4);" value="4" />
+                        <input type="button"  class="numero ui-button ui-widget numero ui-state-default ui-button-text-only ui-corner-all" onclick="javascript:pulsar(5);" value="5" />
+                        <input type="button"  class="numero ui-button ui-widget numero ui-state-default ui-button-text-only ui-corner-all" onclick="javascript:pulsar(6);" value="6" />
+                        <input type="button"  class="numero ui-button ui-widget numero ui-state-default ui-button-text-only ui-corner-all" onclick="javascript:pulsar(7);" value="7" />
+                        <input type="button"  class="numero ui-button ui-widget numero ui-state-default ui-button-text-only ui-corner-all" onclick="javascript:pulsar(8);" value="8" />
+                        <input type="button"  class="numero ui-button ui-widget numero ui-state-default ui-button-text-only ui-corner-all" onclick="javascript:pulsar(9);" value="9" />
                     </div>
                     <div id="control">
                         <div id="control_set">
                             <input type="button" id="set" class="control ui-button ui-widget ui-state-default ui-button-text-only ui-corner-all" onclick="javascript:set();" value="Set" />
                             <input type="button" id="reset" class="control ui-button ui-widget ui-state-default ui-button-text-only ui-corner-all" onclick="javascript:reset();" value="Reset" />
                         </div>
-                        <div id="control_iniciar">
+                        <div id="control_init">
                             <input type="button" id="iniciar" class="control ui-button ui-widget ui-state-default ui-button-text-only ui-corner-all" onclick="javascript:iniciar();" value="Iniciar" />
                             <input type="button" id="parar" class="control ui-button ui-widget ui-state-default ui-button-text-only ui-corner-all" onclick="javascript:parar();" value="Parar" />
                             <input type="button" id="reiniciar" class="control ui-button ui-widget ui-state-default ui-button-text-only ui-corner-all" onclick="javascript:reiniciar();" value="Reiniciar" />
@@ -43,7 +42,6 @@
             </div>
         </div>
         <a href="#" id="enlace_focus" style="color: transparent;">&nbsp;</a>
-
     </body>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.theme.min.css" crossorigin="anonymous"></script>

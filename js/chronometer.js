@@ -1,5 +1,16 @@
+var num_pulsaciones = 0;
+var horas = 0;
+var minutos = 0;
+var segundos = 0;
+var horas_set = 0;
+var minutos_set = 0;
+var segundos_set = 0;
+var cuenta_atras_iniciada = false;
+var setted = false;
+
+
 $(document).ready(function() {
-    $("#control_iniciar").toggle();
+    $("#control_init").toggle();
 
 });
 
@@ -15,15 +26,6 @@ $(function(){
         );
 });
 
-var num_pulsaciones = 0;
-var horas = 0;
-var minutos = 0;
-var segundos = 0;
-var horas_set = 0;
-var minutos_set = 0;
-var segundos_set = 0;
-var cuenta_atras_iniciada = false;
-var setted = false;
 
 function pulsar(num){
     if (cuenta_atras_iniciada == false && setted == false){
@@ -31,9 +33,9 @@ function pulsar(num){
             num_pulsaciones++;
         }
 
-        var horas_contador = $("#horas").text();
-        var minutos_contador = $("#minutos").text();
-        var segundos_contador = $("#segundos").text();
+        var horas_contador = $(".hour").text();
+        var minutos_contador = $(".minute").text();
+        var segundos_contador = $(".second").text();
 
         if (num_pulsaciones <= 6){
             horas_contador = horas_contador.charAt(1) + minutos_contador.charAt(0);
@@ -59,9 +61,9 @@ function reset(){
 function set(){
     num_pulsaciones = 6;
 
-    var segundos_contador = parseInt($("#segundos").text(), 10);
-    var minutos_contador = parseInt($("#minutos").text(), 10);
-    var horas_contador = parseInt($("#horas").text(), 10);
+    var segundos_contador = parseInt($(".second").text(), 10);
+    var minutos_contador = parseInt($(".minute").text(), 10);
+    var horas_contador = parseInt($(".hour").text(), 10);
 
     if (segundos_contador >= 60){
         segundos_contador -= 60;
@@ -102,17 +104,17 @@ function pintar(horas, minutos, segundos){
         segundos = "0" + segundos;
     }
 
-    $("#horas").text(horas);
-    $("#minutos").text(minutos);
-    $("#segundos").text(segundos);
+    $(".hour").text(horas);
+    $(".minute").text(minutos);
+    $(".second").text(segundos);
 }
 
 function iniciar(){
     //    set();
     if(cuenta_atras_iniciada == false){
-        horas = parseInt($("#horas").text(), 10);
-        minutos = parseInt($("#minutos").text(), 10);
-        segundos = parseInt($("#segundos").text(), 10);
+        horas = parseInt($(".hour").text(), 10);
+        minutos = parseInt($(".minute").text(), 10);
+        segundos = parseInt($(".second").text(), 10);
         cuenta_atras_iniciada = true;
         cuenta_atras();
     }
@@ -158,7 +160,7 @@ function parar(){
 
 function toggle_control(){
     $("#control_set").slideToggle();
-    $("#control_iniciar").slideToggle();
+    $("#control_init").slideToggle();
     $("#teclado").slideToggle();
 }
 
