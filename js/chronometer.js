@@ -14,6 +14,7 @@ $(document).ready(function() {
 
 });
 
+
 $(function(){
     //hover states on the static widgets
     $('#dialog_link, ul#icons li, .ui-button').hover(
@@ -24,6 +25,15 @@ $(function(){
             $(this).removeClass('ui-state-hover');
         }
         );
+
+        $("#iniciar").click(function(){
+            $(".keynumber").hide();
+        }); 
+        
+        $("#cambiar").click(function(){
+            $(".keynumber").show();
+        }); 
+        
 });
 
 
@@ -142,10 +152,10 @@ function cuenta_atras(){
         }else{
 
             if(horas == 0 && minutos == 0){
-                $("#reloj").addClass("aviso_amarillo");
+                $(".watch").addClass("aviso_amarillo");
             }
             if(horas == 0 && minutos == 0 && segundos == 0){
-                $("#reloj").addClass("aviso_rojo");
+                $(".watch").addClass("aviso_rojo");
             }
 
             pintar(horas, minutos, segundos);
@@ -165,8 +175,8 @@ function toggle_control(){
 }
 
 function cambiar(){
-    $("#reloj").removeClass("aviso_amarillo");
-    $("#reloj").removeClass("aviso_rojo");
+    $(".watch").removeClass("aviso_amarillo");
+    $(".watch").removeClass("aviso_rojo");
     reset();
     parar();
     toggle_control();
@@ -175,7 +185,8 @@ function cambiar(){
 
 function reiniciar(){
     parar();
-    $("#reloj").removeClass("aviso_amarillo");
+    $(".watch").removeClass("aviso_amarillo");
+    $(".watch").removeClass("aviso_rojo");
     pintar(horas_set, minutos_set, segundos_set);
 }
 
