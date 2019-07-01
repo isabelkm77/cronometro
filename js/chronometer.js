@@ -5,7 +5,7 @@ var segundos = 0;
 var horas_set = 0;
 var minutos_set = 0;
 var segundos_set = 0;
-var cuenta_atras_iniciada = false;
+var start_count_down = false;
 var setted = false;
 
 
@@ -26,27 +26,26 @@ $(function(){
         }
         );
 
-        $("#iniciar").click(function(){
+        $("#init").click(function(){
             $(".keynumber").hide();
         }); 
         
-        $("#cambiar").click(function(){
+        $("#change").click(function(){
             $(".keynumber").show();
         }); 
         
 });
 
 
-function pulsar(num){
-    if (cuenta_atras_iniciada == false && setted == false){
+function pressKeyNumber(num){
+    var horas_contador = $(".hour").text();
+    var minutos_contador = $(".minute").text();
+    var segundos_contador = $(".second").text();
+
+    if (start_count_down == false && setted == false){
         if (num_pulsaciones != 0 || num != 0){
             num_pulsaciones++;
         }
-
-        var horas_contador = $(".hour").text();
-        var minutos_contador = $(".minute").text();
-        var segundos_contador = $(".second").text();
-
         if (num_pulsaciones <= 6){
             horas_contador = horas_contador.charAt(1) + minutos_contador.charAt(0);
             minutos_contador = minutos_contador.charAt(1) + segundos_contador.charAt(0);
@@ -58,14 +57,14 @@ function pulsar(num){
             segundos_contador = num;
         }
 
-        pintar(horas_contador, minutos_contador, segundos_contador);
+        paint_chronometer(horas_contador, minutos_contador, segundos_contador);
     }
 }
 
 function reset(){
     num_pulsaciones = 0;
     parar();
-    pintar(0, 0, 0);
+    paint_chronometer(0, 0, 0);
 }
 
 function set(){
@@ -92,14 +91,14 @@ function set(){
     if(horas_set != 0 || minutos_set != 0 || segundos_set != 0){
         setted = true;
 
-        pintar(horas_contador, minutos_contador, segundos_contador);
+        paint_chronometer(horas_contador, minutos_contador, segundos_contador);
 
         toggle_control();
     }
 
 }
 
-function pintar(horas, minutos, segundos){
+function paint_chronometer(horas, minutos, segundos){
     horas = parseInt(horas, 10);
     minutos = parseInt(minutos, 10);
     segundos = parseInt(segundos, 10);
@@ -121,17 +120,17 @@ function pintar(horas, minutos, segundos){
 
 function iniciar(){
     //    set();
-    if(cuenta_atras_iniciada == false){
+    if(start_count_down == false){
         horas = parseInt($(".hour").text(), 10);
         minutos = parseInt($(".minute").text(), 10);
         segundos = parseInt($(".second").text(), 10);
-        cuenta_atras_iniciada = true;
+        start_count_down = true;
         cuenta_atras();
     }
 }
 
 function cuenta_atras(){
-    if (cuenta_atras_iniciada == true){
+    if (start_count_down == true){
         segundos = segundos - 1;
         if(segundos < 0){
             segundos = 59;
@@ -158,14 +157,14 @@ function cuenta_atras(){
                 $(".watch").addClass("aviso_rojo");
             }
 
-            pintar(horas, minutos, segundos);
+            paint_chronometer(horas, minutos, segundos);
             setTimeout("cuenta_atras()",1000);
         }
     }
 }
 
 function parar(){
-    cuenta_atras_iniciada = false;
+    start_count_down = false;
 }
 
 function toggle_control(){
@@ -187,53 +186,46 @@ function reiniciar(){
     parar();
     $(".watch").removeClass("aviso_amarillo");
     $(".watch").removeClass("aviso_rojo");
-    pintar(horas_set, minutos_set, segundos_set);
+    paint_chronometer(horas_set, minutos_set, segundos_set);
 }
 
 $(document).keyup(function(event) {
-    // 0 = 48
-    // 1 = 49
-    // 9 = 57
-    // enter = 13
-    // esc = 27
-    // backspace = 8
-    //    alert(event.keyCode);
     $("#enlace_focus").focus();
 
     switch (event.keyCode) {
         case 48:
-            pulsar(0);
+            pressKeyNumber(0);
             break
         case 49:
-            pulsar(1);
+            pressKeyNumber(1);
             break
         case 50:
-            pulsar(2);
+            pressKeyNumber(2);
             break
         case 51:
-            pulsar(3);
+            pressKeyNumber(3);
             break
         case 52:
-            pulsar(4);
+            pressKeyNumber(4);
             break
         case 53:
-            pulsar(5);
+            pressKeyNumber(5);
             break
         case 54:
-            pulsar(6);
+            pressKeyNumber(6);
             break
         case 55:
-            pulsar(7);
+            pressKeyNumber(7);
             break
         case 56:
-            pulsar(8);
+            pressKeyNumber(8);
             break
         case 57:
-            pulsar(9);
+            pressKeyNumber(9);
             break
         case 13: //enter
             if (setted == true){
-                if(cuenta_atras_iniciada == true){
+                if(start_count_down == true){
                     parar();
                 }else{
                     iniciar();
