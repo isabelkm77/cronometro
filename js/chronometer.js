@@ -38,26 +38,26 @@ $(function(){
 
 
 function pressKeyNumber(num){
-    var horas_contador = $(".hour").text();
-    var minutos_contador = $(".minute").text();
-    var segundos_contador = $(".second").text();
-
+    var key_hours = $(".hour").text();
+    var key_minutes = $(".minute").text();
+    var key_seconds = $(".second").text();
+    
     if (start_count_down == false && setted == false){
         if (num_pulsaciones != 0 || num != 0){
             num_pulsaciones++;
         }
         if (num_pulsaciones <= 6){
-            horas_contador = horas_contador.charAt(1) + minutos_contador.charAt(0);
-            minutos_contador = minutos_contador.charAt(1) + segundos_contador.charAt(0);
-            segundos_contador = segundos_contador.charAt(1) + "" + num;
+            key_hours = key_hours.charAt(1) + key_minutes.charAt(0);
+            key_minutes = key_minutes.charAt(1) + key_seconds.charAt(0);
+            key_seconds = key_seconds.charAt(1) + "" + num;          
         }else{
             num_pulsaciones = 1;
-            horas_contador = 0;
-            minutos_contador = 0;
-            segundos_contador = num;
+            key_hours = 0;
+            key_minutes = 0;
+            key_seconds = num;
         }
 
-        paint_chronometer(horas_contador, minutos_contador, segundos_contador);
+        paint_chronometer(key_hours, key_minutes, key_seconds);
     }
 }
 
@@ -70,53 +70,56 @@ function reset(){
 function set(){
     num_pulsaciones = 6;
 
-    var segundos_contador = parseInt($(".second").text(), 10);
-    var minutos_contador = parseInt($(".minute").text(), 10);
-    var horas_contador = parseInt($(".hour").text(), 10);
+    var key_seconds = parseInt($(".second").text(), 10);
+    var key_minutes = parseInt($(".minute").text(), 10);
+    var key_hours = parseInt($(".hour").text(), 10);
 
-    if (segundos_contador >= 60){
-        segundos_contador -= 60;
-        minutos_contador++;
+    if (key_seconds >= 60){
+        key_seconds -= 60;
+        key_minutes++;
     }
 
-    if (minutos_contador >= 60){
-        minutos_contador -= 60;
-        horas_contador++;
+    if (key_minutes >= 60){
+        key_minutes -= 60;
+        key_hours++;
     }
 
-    horas_set = horas_contador;
-    minutos_set = minutos_contador;
-    segundos_set = segundos_contador;
+    horas_set = key_hours;
+    minutos_set = key_minutes;
+    segundos_set = key_seconds;
 
     if(horas_set != 0 || minutos_set != 0 || segundos_set != 0){
         setted = true;
 
-        paint_chronometer(horas_contador, minutos_contador, segundos_contador);
+        paint_chronometer(key_hours, key_minutes, key_seconds);
 
         toggle_control();
     }
 
 }
 
-function paint_chronometer(horas, minutos, segundos){
-    horas = parseInt(horas, 10);
-    minutos = parseInt(minutos, 10);
-    segundos = parseInt(segundos, 10);
+function paint_chronometer(hours, minutes, seconds){
+    hours = parseInt(hours, 10);
+    minutes = parseInt(minutes, 10);
+    seconds = parseInt(seconds, 10);
+ 
+    if (hours < 10){
+        hours = "0" + hours;
+    }
+    if (minutes < 10){
+        minutes = "0" + minutes;
+    }
+    if (seconds < 10){
+        seconds = "0" + seconds;
+    }
 
-    if (horas < 10){
-        horas = "0" + horas;
-    }
-    if (minutos < 10){
-        minutos = "0" + minutos;
-    }
-    if (segundos < 10){
-        segundos = "0" + segundos;
-    }
-
-    $(".hour").text(horas);
-    $(".minute").text(minutos);
-    $(".second").text(segundos);
+    $(".hour").text((hours));
+    $(".minute").text((minutes));
+    $(".second").text(seconds);
 }
+
+
+
 
 function iniciar(){
     //    set();
@@ -170,7 +173,7 @@ function parar(){
 function toggle_control(){
     $("#control_set").slideToggle();
     $("#control_init").slideToggle();
-    $("#teclado").slideToggle();
+    $(".keynumber").slideToggle();
 }
 
 function cambiar(){
